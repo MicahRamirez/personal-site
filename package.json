@@ -1,0 +1,32 @@
+{
+  "name": "personal-site",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MicahRamirez/personal-site.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MicahRamirez/personal-site/issues"
+  },
+  "homepage": "https://github.com/MicahRamirez/personal-site#readme",
+  "dependencies": {
+    "@zeit/next-typescript": "^1.1.1",
+    "next": "^7.0.2",
+    "react": "^16.7.0",
+    "react-dom": "^16.7.0"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.1",
+    "@types/react-dom": "^16.0.11"
+  }
+}
