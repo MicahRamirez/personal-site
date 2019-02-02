@@ -1,4 +1,10 @@
 {
     "name": "atarashi",
-    "version": 0
+    "version": 2,
+    "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+    "github": {
+        "autoJobCancelation": false
+    },
+    "public": true
+
 }
