@@ -1,10 +1,16 @@
 {
     "name": "atarashi",
     "version": 2,
-    "builds": [{ "src": "next.config.js", "use": "@now/next" }],
+    "builds": [
+        { "src": "www/package.json", "use": "@now/next" },
+        { "src": "api/*.ts", "use": "@now/node@canary" }
+    ],
     "github": {
         "autoJobCancelation": false
     },
-    "public": true
-
+    "public": true,
+    "routes": [
+        { "src": "api/(.*)", "dest": "/api/$1" },
+        { "src": "/(.*)", "dest": "/www/$1" }
+    ]
 }

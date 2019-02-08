@@ -1,0 +1,5 @@
+{
+    "watch": ["."],
+    "exec": "node --inspect -r ts-node/register ./index.ts",
+    "ext": "ts"
+}
