@@ -38,11 +38,10 @@ const animatedAppBar = () => {
   useChain(chainRefs);
   return consolidatedTransitions;
 };
+console.log("hello");
 
 const useStyles = makeStyles({
   root: {
-    color: styledBy("color"),
-    background: styledBy("color"),
     backgroundColor: styledBy("color"),
     borderRadius: "20px",
     margin: "10px",
