@@ -43,8 +43,5 @@
     "@types/styled-jsx": "^2.2.8",
     "babel-plugin-styled-components": "^1.10.0",
     "tslint": "^5.12.1"
-  },
-  "resolutions": {
-    "terser": "3.14.1"
   }
 }
