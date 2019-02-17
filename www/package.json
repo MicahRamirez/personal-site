@@ -20,28 +20,31 @@
   },
   "homepage": "https://github.com/MicahRamirez/personal-site#readme",
   "dependencies": {
-    "@material-ui/core": "^3.9.1",
+    "@material-ui/core": "^3.9.2",
     "@material-ui/styles": "^3.0.0-alpha.10",
-    "@types/material-ui": "^0.21.5",
+    "@types/material-ui": "^0.21.6",
     "@types/next": "^8.0.1",
     "@zeit/next-typescript": "^1.1.1",
     "add": "^2.0.6",
-    "next": "^8.0.0-canary.18",
+    "next": "^8.0.1",
     "react": "^16.8.2",
     "react-dom": "^16.8.2",
     "react-jss": "^8.6.1",
     "react-spring": "^8.0.7",
     "styled-by": "^0.3.0",
-    "yarn": "^1.13.0"
+    "yarn": "^1.14.0"
   },
   "devDependencies": {
-    "@babel/core": "^7.2.2",
-    "@babel/preset-typescript": "^7.1.0",
-    "@types/react": "^16.8.1",
-    "@types/react-dom": "^16.0.11",
+    "@babel/core": "^7.3.3",
+    "@babel/preset-typescript": "^7.3.3",
+    "@types/react": "^16.8.3",
+    "@types/react-dom": "^16.8.2",
     "@types/react-jss": "^8.6.2",
     "@types/styled-jsx": "^2.2.8",
     "babel-plugin-styled-components": "^1.10.0",
     "tslint": "^5.12.1"
+  },
+  "resolutions": {
+    "terser-webpack-plugin": "1.2.2"
   }
 }
