@@ -2,9 +2,11 @@ import React, { ReactElement } from "react";
 import PropTypes, { ReactComponentLike } from "prop-types";
 import Document, { Head, Main, NextScript, AnyPageProps } from "next/document";
 import flush from "styled-jsx/server";
+import { install } from "@material-ui/styles";
+install();
 
 import { PageContext } from "../lib/getPageContext";
-
+console.log("im first");
 class MyDocument extends Document<{ pageContext: PageContext }> {
   render() {
     const { pageContext } = this.props;

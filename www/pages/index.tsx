@@ -15,7 +15,6 @@ import ThemeRoot from "../lib/theme";
 import { Theme } from "@material-ui/core";
 
 const routeConfig = [
-  { key: "About Me", text: "About Me", href: "/About" },
   { key: "Projects", text: "Projects", href: "/Projects" },
   { key: "Blog", text: "Blog", href: "/Blog" },
   { key: "Contact", text: "Contact", href: "/Contact" }
@@ -38,7 +37,6 @@ const animatedAppBar = () => {
   useChain(chainRefs);
   return consolidatedTransitions;
 };
-console.log("hello");
 
 const useStyles = makeStyles({
   root: {
@@ -84,7 +82,7 @@ const Main = () => {
         >
           {transitions.map(({ item, props, key }) => {
             return (
-              <Grid key={key} item xs={3}>
+              <Grid key={key} item xs={4}>
                 <AnimatedBarBubble
                   href="/About"
                   text={item.text}
