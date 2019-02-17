@@ -1,46 +1,103 @@
-import React, { useState } from "react";
-import Paper from "@material-ui/core/Paper";
+import React, { useRef, RefObject } from "react";
+import { makeStyles, useTheme } from "@material-ui/styles";
+import styledBy from "styled-by";
 import Grid from "@material-ui/core/Grid";
-import AppBar from "@material-ui/core/AppBar";
-import { useSpring, animated, useTransition } from "react-spring";
+import {
+  useChain,
+  animated,
+  useTransition,
+  ReactSpringHook,
+  UseTransitionResult
+} from "react-spring";
 import Link from "next/link";
 
 import ThemeRoot from "../lib/theme";
+import { Theme } from "@material-ui/core";
 
-const Test = () => {
-  const [items, _] = useState([
-    { key: "About Me", text: "About Me", i: 1 },
-    { key: "Projects", text: "Projects", i: 2 }
-  ]);
-  const transitions = useTransition(items, item => item.key, {
-    from: { transform: `translate(0px, 0px)` },
-    enter: { transform: `translate(120px, 0px)` }
+const routeConfig = [
+  { key: "About Me", text: "About Me", href: "/About" },
+  { key: "Projects", text: "Projects", href: "/Projects" },
+  { key: "Blog", text: "Blog", href: "/Blog" },
+  { key: "Contact", text: "Contact", href: "/Contact" }
+];
+
+const animatedAppBar = () => {
+  const chainRefs: RefObject<ReactSpringHook>[] = [];
+  const consolidatedTransitions: UseTransitionResult<any, any>[] = [];
+  routeConfig.forEach(element => {
+    const ref = useRef(null);
+    chainRefs.push(ref);
+    consolidatedTransitions.push(
+      ...useTransition([element], item => item.key, {
+        ref: ref,
+        from: { transform: `translate(-120px, 0px)`, opacity: 0 },
+        enter: { transform: `translate(0px, 0px)`, opacity: 1 }
+      })
+    );
   });
+  useChain(chainRefs);
+  return consolidatedTransitions;
+};
+
+const useStyles = makeStyles({
+  root: {
+    color: styledBy("color"),
+    background: styledBy("color"),
+    backgroundColor: styledBy("color"),
+    borderRadius: "20px",
+    margin: "10px",
+    paddingTop: "8px",
+    paddingBottom: "8px"
+  }
+});
+
+interface AnimatedBarBubbleProps {
+  animatedProps: any;
+  text: string;
+  href: string;
+}
+
+const AnimatedBarBubble = (props: AnimatedBarBubbleProps) => {
+  const theme: Theme = useTheme();
+  const classes = useStyles({ color: theme.palette.primary.main });
+  return (
+    <animated.div
+      style={{ ...props.animatedProps, textAlign: "center" }}
+      className={classes.root}
+    >
+      <Link href={props.href}>
+        <a style={{ color: "#FFFFFF" }}>{props.text}</a>
+      </Link>
+    </animated.div>
+  );
+};
+
+const Main = () => {
+  const transitions = animatedAppBar();
   return (
     <ThemeRoot>
       <Grid container>
-        <Grid container>
+        <Grid
+          container
+          alignItems="center"
+          direction="row"
+          justify="space-evenly"
+        >
           {transitions.map(({ item, props, key }) => {
-            console.log(item, key);
             return (
-              <Grid key={key} item xs={2}>
-                <animated.div style={props}>
-                  <Link href="/About">
-                    <a>{item.text}</a>
-                  </Link>
-                </animated.div>
+              <Grid key={key} item xs={3}>
+                <AnimatedBarBubble
+                  href="/About"
+                  text={item.text}
+                  animatedProps={props}
+                />
               </Grid>
             );
           })}
         </Grid>
-        <Grid item xs={2} />
-        <Grid item xs={10}>
-          <Paper style={{ width: 600, height: 400 }} />
-        </Grid>
-        <Grid item xs={2} />
       </Grid>
     </ThemeRoot>
   );
 };
 
-export default Test;
+export default Main;
