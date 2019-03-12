@@ -8,10 +8,16 @@ import { SheetsRegistry, GenerateId } from "jss";
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: "#015921"
+      main: "#015921",
+      light: "#3d874a",
+      dark: "#002e00",
+      contrastText: "#ffffff"
     },
     secondary: {
-      main: "#a1887f"
+      main: "#a1887f",
+      light: "#d3b8ae",
+      dark: "#725b53",
+      contrastText: "#000000"
     }
   },
   typography: {
