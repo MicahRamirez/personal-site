@@ -1,7 +1,10 @@
+import "typeface-roboto";
 import React, { useRef, RefObject } from "react";
 import { makeStyles, useTheme } from "@material-ui/styles";
 import styledBy from "styled-by";
 import Grid from "@material-ui/core/Grid";
+import Typography from "@material-ui/core/Typography";
+
 import {
   useChain,
   animated,
@@ -11,7 +14,6 @@ import {
 } from "react-spring";
 import Link from "next/link";
 
-import ThemeRoot from "../lib/theme";
 import { Theme } from "@material-ui/core";
 
 const routeConfig = [
@@ -63,7 +65,7 @@ const AnimatedBarBubble = (props: AnimatedBarBubbleProps) => {
       className={classes.root}
     >
       <Link href={props.href}>
-        <a style={{ color: "#FFFFFF" }}>{props.text}</a>
+        <Typography color="textPrimary">{props.text}</Typography>
       </Link>
     </animated.div>
   );
@@ -72,28 +74,27 @@ const AnimatedBarBubble = (props: AnimatedBarBubbleProps) => {
 const Main = () => {
   const transitions = animatedAppBar();
   return (
-    <ThemeRoot>
-      <Grid container>
-        <Grid
-          container
-          alignItems="center"
-          direction="row"
-          justify="space-evenly"
-        >
-          {transitions.map(({ item, props, key }) => {
-            return (
-              <Grid key={key} item xs={4}>
-                <AnimatedBarBubble
-                  href="/About"
-                  text={item.text}
-                  animatedProps={props}
-                />
-              </Grid>
-            );
-          })}
-        </Grid>
+    <Grid container>
+      <Grid
+        container
+        alignItems="center"
+        direction="row"
+        justify="space-evenly"
+      >
+        {transitions.map(({ item, props, key }) => {
+          return (
+            <Grid key={key} item xs={4}>
+              <AnimatedBarBubble
+                href="/About"
+                text={item.text}
+                animatedProps={props}
+              />
+            </Grid>
+          );
+        })}
       </Grid>
-    </ThemeRoot>
+      <Typography> Hello </Typography>
+    </Grid>
   );
 };
 
