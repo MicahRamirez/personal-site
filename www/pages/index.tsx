@@ -4,6 +4,7 @@ import { makeStyles, useTheme } from "@material-ui/styles";
 import styledBy from "styled-by";
 import Grid from "@material-ui/core/Grid";
 import Typography from "@material-ui/core/Typography";
+import Paper from "@material-ui/core/Paper";
 
 import {
   useChain,
@@ -17,9 +18,10 @@ import Link from "next/link";
 import { Theme } from "@material-ui/core";
 
 const routeConfig = [
-  { key: "Projects", text: "Projects", href: "/Projects" },
-  { key: "Blog", text: "Blog", href: "/Blog" },
-  { key: "Contact", text: "Contact", href: "/Contact" }
+  { key: "Projects", text: "Projects", href: "/projects" },
+  { key: "Blog", text: "Blog", href: "/blog" },
+  { key: "Snowboarding", text: "Snowboarding", href: "/snowboarding" },
+  { key: "Work with me!", text: "Work with me!", href: "/work" }
 ];
 
 const animatedAppBar = () => {
@@ -83,9 +85,9 @@ const Main = () => {
       >
         {transitions.map(({ item, props, key }) => {
           return (
-            <Grid key={key} item xs={4}>
+            <Grid key={key} item xs={3}>
               <AnimatedBarBubble
-                href="/About"
+                href={item.href}
                 text={item.text}
                 animatedProps={props}
               />
@@ -93,7 +95,37 @@ const Main = () => {
           );
         })}
       </Grid>
-      <Typography> Hello </Typography>
+      <Grid container alignItems={"center"}>
+        <Grid item xs={10}>
+          <Grid container>
+            <Grid item xs={12}>
+              <Paper>
+                <Typography color={"textSecondary"}>
+                  Xavier Micah Ramirez. I am currently based in Austin, Texas.
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper>
+                <Typography color={"textSecondary"}>
+                  Based in Austin, TX
+                </Typography>
+                <Typography color={"textSecondary"}>
+                  Looking for opportunities in Tokyo, JPN{" "}
+                </Typography>
+              </Paper>
+            </Grid>
+            <Grid item xs={12}>
+              <Paper>
+                <Typography color={"textSecondary"}>
+                  Specialized in iteratively deploying user-facing applications
+                  in order to meet the needs of customers and businesses.
+                </Typography>
+              </Paper>
+            </Grid>
+          </Grid>
+        </Grid>
+      </Grid>
     </Grid>
   );
 };
