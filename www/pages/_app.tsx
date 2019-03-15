@@ -1,4 +1,3 @@
-import "../lib/bootstrap";
 // --- Post bootstrap -----
 import React from "react";
 import App, { Container } from "next/app";
@@ -7,11 +6,14 @@ import { StylesProvider, ThemeProvider } from "@material-ui/styles";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import getPageContext, { PageContext } from "../lib/getPageContext";
 
-class MyApp extends App {
+class MyApp extends App<{}, { hasRendered: boolean }> {
   constructor() {
     // @ts-ignore
     super();
     this.pageContext = getPageContext();
+    this.state = {
+      hasRendered: false
+    };
   }
 
   componentDidMount() {
@@ -20,6 +22,7 @@ class MyApp extends App {
     if (jssStyles && jssStyles.parentNode) {
       jssStyles.parentNode.removeChild(jssStyles);
     }
+    this.setState({ hasRendered: true });
   }
 
   render() {
@@ -42,7 +45,12 @@ class MyApp extends App {
             <CssBaseline />
             {/* Pass pageContext to the _document though the renderPage enhancer
                 to render collected styles on server side. */}
-            <Component pageContext={this.pageContext} {...pageProps} />
+            <Component
+              style={{ height: "100%" }}
+              pageContext={this.pageContext}
+              hasRendered={this.state.hasRendered}
+              {...pageProps}
+            />
           </ThemeProvider>
         </StylesProvider>
       </Container>

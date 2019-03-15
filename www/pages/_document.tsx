@@ -23,7 +23,7 @@ class MyDocument extends Document<{
     const themeColor = theme.palette.primary.main;
 
     return (
-      <html lang="en" dir="ltr">
+      <html lang="en" dir="ltr" style={{ height: "100%" }}>
         <Head>
           <meta charSet="utf-8" />
           {/* Use minimum-scale=1 to enable GPU rasterization */}
@@ -33,12 +33,17 @@ class MyDocument extends Document<{
           />
           {/* PWA primary color */}
           <meta name="theme-color" content={themeColor} />
+          <style>{`
+            #__next {
+              height: 100%;
+            }
+          `}</style>
           <link
             rel="stylesheet"
             href="https://fonts.googleapis.com/css?family=Roboto:300,400,500"
           />
         </Head>
-        <body>
+        <body style={{ height: "100%" }}>
           <Main />
           <NextScript />
         </body>
@@ -91,6 +96,8 @@ MyDocument.getInitialProps = ctx => {
 
   let css;
   // It might be undefined, e.g. after an error.
+  console.log("hello!!!");
+  console.log(process.env.NODE_ENV);
   if (pageContext) {
     css = (pageContext as PageContext).sheetsRegistry.toString();
   }
