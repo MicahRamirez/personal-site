@@ -1,16 +1,26 @@
 {
     "name": "atarashi",
     "version": 2,
-    "builds": [
-        { "src": "www/package.json", "use": "@now/next" },
-        { "src": "api/*.ts", "use": "@now/node@canary" }
+    "builds": [{
+            "src": "www/package.json",
+            "use": "@now/next"
+        },
+        {
+            "src": "api/*.ts",
+            "use": "@now/node"
+        }
     ],
     "github": {
         "autoJobCancelation": false
     },
     "public": true,
-    "routes": [
-        { "src": "api/(.*)", "dest": "/api/$1" },
-        { "src": "/(.*)", "dest": "/www/$1" }
+    "routes": [{
+            "src": "api/(.*)",
+            "dest": "/api/$1"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/www/$1"
+        }
     ]
 }
