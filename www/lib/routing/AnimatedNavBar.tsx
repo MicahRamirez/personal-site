@@ -51,6 +51,7 @@ interface AnimatedBarBubbleProps {
   href: string;
 }
 
+console.log("hello");
 export const AnimatedNavBubble = (props: AnimatedBarBubbleProps) => {
   const theme: Theme = useTheme();
   const classes = useStyles({ color: theme.palette.primary.main });
